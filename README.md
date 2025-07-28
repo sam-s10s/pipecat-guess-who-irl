@@ -49,7 +49,9 @@ CHARACTER_NAMES = json.loads(load_file("characters.json", __file__))
 # Pass the names through as additional vocab
 stt = SpeechmaticsSTTService(
     ...,
-    additional_vocab=[AdditionalVocabEntry(content=name) for name in CHARACTER_NAMES],
+    transcription_config=TranscriptionConfig(
+        additional_vocab=[{"content": name} for name in CHARACTER_NAMES]
+    ),
 )
 ```
 
