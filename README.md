@@ -15,8 +15,6 @@ This demo showcases how to build a conversational AI game using:
 
 The agent can understand speech, maintain game state, ask strategic questions, and make educated guesses about your chosen character.
 
-**Note:** This code requires a version of Pipecat that is not yet released. See the [pull request #2225](https://github.com/pipecat-ai/pipecat/pull/2225) for more information.
-
 ### Naughty LLMs!
 
 LLMs are pretty good at playing games, but they can find it hard to understand rules. You might think that Guess Who? is simple - it is for us humans - but LLMs have trouble in not asking out of turn.
