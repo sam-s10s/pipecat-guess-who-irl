@@ -28,7 +28,6 @@ from pipecat.services.openai.base_llm import BaseOpenAILLMService
 from pipecat.services.openai.llm import OpenAILLMService
 from pipecat.services.speechmatics.stt import (
     SpeechmaticsSTTService,
-    TranscriptionConfig,
 )
 from pipecat.transcriptions.language import Language
 from pipecat.transports.base_transport import BaseTransport, TransportParams
@@ -80,11 +79,11 @@ async def run_example(
     stt = SpeechmaticsSTTService(
         api_key=os.getenv("SPEECHMATICS_API_KEY"),
         base_url="wss://preview.rt.speechmatics.com/v2",
-        language=Language.EN,
-        end_of_utterance_silence_trigger=0.5,
-        text_format="<{speaker_id}>{text}</{speaker_id}>",
-        transcription_config=TranscriptionConfig(
-            additional_vocab=[{"content": name} for name in CHARACTER_NAMES]
+        params=SpeechmaticsSTTService.InputParams(
+            language=Language.EN,
+            end_of_utterance_silence_trigger=0.5,
+            enable_diarization=True,
+            additional_vocab=[{"content": name} for name in CHARACTER_NAMES],
         ),
     )
 
